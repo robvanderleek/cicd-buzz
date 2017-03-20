@@ -10,3 +10,4 @@ script:
 
 after_success:
   - sh ./.travis/deploy_dockerhub.sh
+  - test "$TRAVIS_BRANCH" = "master" && ./.travis/deploy_heroku.sh
