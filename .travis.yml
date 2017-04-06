@@ -1,3 +1,7 @@
+notifications:
+  email:
+    - robvanderleek@gmail.com
+
 sudo: required
 
 services:
