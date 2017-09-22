@@ -5,3 +5,4 @@
 - Medium post: https://medium.com/@robvanderleek/how-to-build-a-modern-ci-cd-pipeline-5faa01891a5b
 - Images at Docker Hub: https://hub.docker.com/r/robvanderleek/cicd-buzz/tags/
 - Deployed application at Heroku: https://fathomless-inlet-53225.herokuapp.com/
+- https://github.com/jenkinsci/pipeline-examples
