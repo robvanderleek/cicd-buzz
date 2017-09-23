@@ -3,9 +3,9 @@ node {
    stage 'checkout'
 
    // Get some code from a GitHub repository
-   git url: 'git@github.com:marcovnyc/cicd-buzz.git'
-   sh 'git clean -fdx; sleep 4;'
-
+   // For SSH private key authentication, try the sshagent step from the SSH Agent plugin.
+sshagent (credentials: ['git-ssh-credentials-d8bd3ab4-7094-403c-97aa-a5e66f389be0']) {
+}
    // Get the maven tool.
    // ** NOTE: This 'mvn' maven tool must be configured
    // **       in the global configuration.
