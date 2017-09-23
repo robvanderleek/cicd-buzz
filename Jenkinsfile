@@ -1,11 +1,11 @@
 node {
    // Mark the code checkout 'stage'....
-   stage 'checkout'
+   stage 'list'
 
    // Get some code from a GitHub repository
    // For SSH private key authentication, try the sshagent step from the SSH Agent plugin.
-sshagent (credentials: ['git-ssh-credentials-d8bd3ab4-7094-403c-97aa-a5e66f389be0']) {
-}
+   sh "ls -all"
+
    // Get the maven tool.
    // ** NOTE: This 'mvn' maven tool must be configured
    // **       in the global configuration.
