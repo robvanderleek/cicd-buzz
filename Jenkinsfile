@@ -1,15 +1,30 @@
-node('docker') {
-  deleteDir()
-  stage 'Checkout'
-  checkout scm
+node {
+ 	// Clean workspace before doing anything
+    deleteDir()
 
-  stage 'Build'
-  docker.build('jenkins')
-
-  stage 'Test'
-  sh """
-  git submodule update --init --recursive
-  git clone https://github.com/sstephenson/bats.git
-  bats/bin/bats tests
-  """
+    try {
+        stage ('Clone') {
+        	checkout scm
+        }
+        stage ('Build') {
+        	sh "echo 'shell scripts to build project...'"
+        }
+        stage ('Tests') {
+	        parallel 'static': {
+	            sh "echo 'shell scripts to run static tests...'"
+	        },
+	        'unit': {
+	            sh "echo 'shell scripts to run unit tests...'"
+	        },
+	        'integration': {
+	            sh "echo 'shell scripts to run integration tests...'"
+	        }
+        }
+      	stage ('Deploy') {
+            sh "echo 'shell scripts to deploy to server...'"
+      	}
+    } catch (err) {
+        currentBuild.result = 'FAILED'
+        throw err
+    }
 }
