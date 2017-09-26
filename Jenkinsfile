@@ -7,7 +7,7 @@ node {
         	checkout scm
         }
         stage ('Build') {
-        	sh "echo 'shell scripts to build project...'"
+        	sh "ls -all && pwd && uptime  && echo $HOSTNAME && echo 'shell scripts to build project...'"
         }
         stage ('Tests') {
 	        parallel 'static': {
