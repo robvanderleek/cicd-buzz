@@ -10,8 +10,10 @@ node ('ecs-staging') {
         }
         stage ('Clone') {
         	checkout scm
-               sh('git rev-parse --short HEAD > GIT_COMMIT')
-               def shortCommit = readFile('GIT_COMMIT').take(6)
+               //sh('git rev-parse --short HEAD > GIT_COMMIT')
+               //def shortCommit = readFile('GIT_COMMIT').take(6)
+                sh 'git rev-parse HEAD > GIT_COMMIT'
+                def shortCommit = readFile('GIT_COMMIT').take(6)
         }
         stage ('Build') {
         	//sh "docker build -t $APP:$short_commit ."
