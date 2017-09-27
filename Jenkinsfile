@@ -10,14 +10,12 @@ node ('ecs-staging') {
         }
         stage ('Clone') {
         	checkout scm
-               // sh('git rev-parse --short HEAD > GIT_COMMIT')
-               // GIT_SHORTHASH=readFile('GIT_COMMIT')
-               // short_commit=GIT_SHORTHASH.take(6)
-                  shortCommit = sh(returnStdout: true, script: "git log -n 1 --pretty=format:'%h'").trim()
+               sh('git rev-parse --short HEAD > GIT_COMMIT')
+               def shortCommit = readFile('GIT_COMMIT').take(6)
         }
         stage ('Build') {
         	//sh "docker build -t $APP:$short_commit ."
-                app = docker.build("cicd-buzz:${env.shortCommit}")
+                app = docker.build("cicd-buzz:${shortCommit}")
         }
         stage ('Tests') {
 	        parallel 'static': {
