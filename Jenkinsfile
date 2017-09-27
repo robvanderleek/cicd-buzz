@@ -7,12 +7,12 @@ node ('ecs-staging') {
         	checkout scm
                 sh('git rev-parse --short HEAD > GIT_COMMIT')
                 GIT_SHORTHASH=readFile('GIT_COMMIT')
-                def APP=cicd-buzz
+                short_commit=GIT_SHORTHASH.take(6)
         }
         stage ('Build') {
                 //IMAGE_TAG=$(GIT_SHORT_HASH)
         	//sh "which docker && docker build -t ${APP}:${IMAGE_TAG} ."
-                sh "echo the short has his $GIT_SHORT_HASH"
+                sh "echo $short_commit"
         }
         stage ('Tests') {
 	        parallel 'static': {
