@@ -7,7 +7,7 @@ node ('ecs-staging') {
         	checkout scm
                 sh('git rev-parse --short HEAD > GIT_COMMIT')
                 GIT_SHORTHASH=readFile('GIT_COMMIT')
-                APP=cicd-buzz
+                def APP=cicd-buzz
         }
         stage ('Build') {
                 //IMAGE_TAG=$(GIT_SHORT_HASH)
