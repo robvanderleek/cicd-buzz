@@ -1,4 +1,4 @@
-node {
+node ('ecs-staging') {
  	// Clean workspace before doing anything yes
     deleteDir()
 
