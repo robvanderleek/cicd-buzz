@@ -15,7 +15,8 @@ node ('ecs-staging') {
                 short_commit=GIT_SHORTHASH.take(6)
         }
         stage ('Build') {
-        	sh "docker build -t $APP:$short_commit ."
+        	//sh "docker build -t $APP:$short_commit ."
+                app = docker.build("cicd-buzz")
         }
         stage ('Tests') {
 	        parallel 'static': {
