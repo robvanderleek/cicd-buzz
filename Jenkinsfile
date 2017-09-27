@@ -5,13 +5,13 @@ node {
     try {
         stage ('Clone') {
         	checkout scm
-                sh('git rev-parse --short HEAD -- > GIT_COMMIT')
+                sh('git rev-parse --short HEAD > GIT_COMMIT')
                 GIT_SHORTHASH=readFile('GIT_COMMIT')
                 APP=cicd-buzz
         }
         stage ('Build') {
                 IMAGE_TAG=$(GIT_SHORT_HASH)
-        	sh "docker build -t ${APP}:${IMAGE_TAG} ."
+        	sh "which docker && docker build -t ${APP}:${IMAGE_TAG} ."
         }
         stage ('Tests') {
 	        parallel 'static': {
