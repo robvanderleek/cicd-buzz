@@ -6,7 +6,7 @@ node ('ecs-staging') {
 
         environment {
              // FOO will be available in entire pipeline
-                APP = "cicd-buzz""
+                APP = "cicd-buzz"
         }
         stage ('Clone') {
         	checkout scm
