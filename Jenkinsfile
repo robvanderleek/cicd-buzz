@@ -3,6 +3,11 @@ node ('ecs-staging') {
     deleteDir()
 
     try {
+
+        environment {
+             // FOO will be available in entire pipeline
+                APP = "cicd-buzz""
+        }
         stage ('Clone') {
         	checkout scm
                 sh('git rev-parse --short HEAD > GIT_COMMIT')
@@ -10,9 +15,7 @@ node ('ecs-staging') {
                 short_commit=GIT_SHORTHASH.take(6)
         }
         stage ('Build') {
-                //IMAGE_TAG=$(GIT_SHORT_HASH)
-        	//sh "which docker && docker build -t ${APP}:${IMAGE_TAG} ."
-                sh "echo $short_commit"
+        	sh "docker build -t $APP:$short_commit ."
         }
         stage ('Tests') {
 	        parallel 'static': {
