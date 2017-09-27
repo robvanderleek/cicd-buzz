@@ -23,7 +23,7 @@ node ('ecs-staging') {
 	        parallel 'static': {
 	           // sh "echo 'shell scripts to run static tests...'"
                    //  docker.image('cicd-buzz):$IMAGE_TAG').inside {
-                       sh 'ls -all'
+                       sh 'which docker'
 	        },
 	        'unit': {
 	            sh "echo 'shell scripts to run unit tests...'"
