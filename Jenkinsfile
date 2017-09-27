@@ -1,5 +1,5 @@
-node {
- 	// Clean workspace before doing anything
+node ('ecs-staging') {
+ 	// Clean workspace before doing anything yes
     deleteDir()
 
     try {
@@ -9,7 +9,7 @@ node {
                 git_shortcommit=readFile('GIT_COMMIT')
         }
         stage ('Build') {
-        	sh "echo $git_shortcommit &&ls -all && pwd && uptime  && echo $HOSTNAME && echo 'shell scripts to build project...'"
+        	sh "echo $git_shortcommit && ls -all && pwd && uptime  && echo $HOSTNAME && echo 'shell scripts to build project...'"
         }
         stage ('Tests') {
 	        parallel 'static': {
