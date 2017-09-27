@@ -6,10 +6,12 @@ node ('ecs-staging') {
         stage ('Clone') {
         	checkout scm
                 sh('git rev-parse --short HEAD -- > GIT_COMMIT')
-                git_shortcommit=readFile('GIT_COMMIT')
+                GIT_SHORTHASH=readFile('GIT_COMMIT')
+                APP=cicd-buzz
         }
         stage ('Build') {
-        	sh "echo short commit version $git_shortcommit && ls -all && pwd && uptime  && echo $HOSTNAME && echo 'shell scripts to build project...'"
+                IMAGE_TAG=$(GIT_SHORT_HASH)
+        	sh "docker build -t ${APP}:${IMAGE_TAG} ."
         }
         stage ('Tests') {
 	        parallel 'static': {
