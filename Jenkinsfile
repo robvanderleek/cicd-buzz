@@ -17,6 +17,7 @@ node ('ecs-staging') {
         }
         stage ('Build') {
         	//sh "docker build -t $APP:$short_commit ."
+                def shortCommit = readFile('GIT_COMMIT').take(6)
                 app = docker.build("cicd-buzz:${shortCommit}")
         }
         stage ('Tests') {
