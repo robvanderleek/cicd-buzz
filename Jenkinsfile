@@ -10,8 +10,9 @@ node ('ecs-staging') {
                 APP=cicd-buzz
         }
         stage ('Build') {
-                IMAGE_TAG=$(GIT_SHORT_HASH)
-        	sh "which docker && docker build -t ${APP}:${IMAGE_TAG} ."
+                //IMAGE_TAG=$(GIT_SHORT_HASH)
+        	//sh "which docker && docker build -t ${APP}:${IMAGE_TAG} ."
+                sh "echo the short has his $GIT_SHORT_HASH"
         }
         stage ('Tests') {
 	        parallel 'static': {
