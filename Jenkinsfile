@@ -22,8 +22,10 @@ node ('ecs-staging') {
         stage ('Tests') {
 	        parallel 'static': {
                     def IMAGE_TAG = readFile('GIT_COMMIT').take(6)
-                    docker.image("cicd-buzz:${IMAGE_TAG}").inside {
-                       sh """pip freeze"""
+//                    docker.image("cicd-buzz:${IMAGE_TAG}").inside {
+//                       sh """pip freeze"""
+                      docker.image('maven:3.3.3-jdk-8').inside {
+                      sh 'ls -all'
                  }
 	        },
 	        'unit': {
