@@ -23,7 +23,7 @@ node ('ecs-staging') {
 	        parallel 'static': {
 	           // sh "echo 'shell scripts to run static tests...'"
                    //  docker.image('cicd-buzz):$IMAGE_TAG').inside {
-                       sh 'docker run -t -w /src cicd-buzz find . -name \\"*.pyc\\" -exec rm -f {} \\\; && python -m pytest tests/test_generator.py'
+                       sh "docker run -t -w /src cicd-buzz find . -name "*.pyc" -exec rm -f {} \; && python -m pytest tests/test_generator.py"
 	        },
 	        'unit': {
 	            sh "echo 'shell scripts to run unit tests...'"
