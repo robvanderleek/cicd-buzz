@@ -19,6 +19,7 @@ node ('ecs-staging') {
                // write a file with the short git hash
                       docker.image('maven:3.3.3-jdk-8').inside {
                       sh 'ls -all'
+         }
         }
         stage ('Build') {
         	// Get the short git hash and use it as the $IMAGE_TAG variable
