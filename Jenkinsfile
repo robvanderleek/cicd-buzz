@@ -9,10 +9,16 @@ node ('ecs-staging') {
                 APP = "cicd-buzz"
         }
         stage ('Clone') {
-        	checkout scm
+                checkout scm
                // write a file with the short git hash
                 sh 'git rev-parse HEAD > GIT_COMMIT'
                 def shortCommit = readFile('GIT_COMMIT').take(6)
+        }
+        stage ('run-ls') {
+        	checkout scm
+               // write a file with the short git hash
+                      docker.image('maven:3.3.3-jdk-8').inside {
+                      sh 'ls -all'
         }
         stage ('Build') {
         	// Get the short git hash and use it as the $IMAGE_TAG variable
