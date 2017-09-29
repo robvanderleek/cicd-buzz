@@ -1,4 +1,4 @@
-node ('jenkins') {
+node ('master') {
      // Clean workspace before doing anything yes
     deleteDir()
 
