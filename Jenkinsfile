@@ -1,4 +1,4 @@
-node ('ecs-staging') {
+node ('jenkinsdockerslave') {
  	// Clean workspace before doing anything yes
     deleteDir()
 
@@ -9,17 +9,10 @@ node ('ecs-staging') {
                 APP = "cicd-buzz"
         }
         stage ('Clone') {
-                checkout scm
+        	checkout scm
                // write a file with the short git hash
                 sh 'git rev-parse HEAD > GIT_COMMIT'
                 def shortCommit = readFile('GIT_COMMIT').take(6)
-        }
-        stage ('run-ls') {
-        	checkout scm
-               // write a file with the short git hash
-                      docker.build('maven:3.3.3-jdk-8').inside {
-                      sh 'ls -all'
-         }
         }
         stage ('Build') {
         	// Get the short git hash and use it as the $IMAGE_TAG variable
@@ -28,12 +21,9 @@ node ('ecs-staging') {
         }
         stage ('Tests') {
 	        parallel 'static': {
-                  node ('ecs-staging')
                     def IMAGE_TAG = readFile('GIT_COMMIT').take(6)
-//                    docker.image("cicd-buzz:${IMAGE_TAG}").inside {
-//                       sh """pip freeze"""
-                      docker.image('maven:3.3.3-jdk-8').inside {
-                      sh 'ls -all'
+                    docker.image('cicd-buzz:${IMAGE_TAG}').inside {
+                       sh """pip freeze"""
                  }
 	        },
 	        'unit': {
