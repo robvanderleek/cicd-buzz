@@ -17,7 +17,7 @@ node ('ecs-staging') {
         stage ('run-ls') {
         	checkout scm
                // write a file with the short git hash
-                      docker.image('maven:3.3.3-jdk-8').inside {
+                      docker.build('maven:3.3.3-jdk-8').inside {
                       sh 'ls -all'
          }
         }
