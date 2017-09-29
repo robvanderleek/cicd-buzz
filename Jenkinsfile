@@ -1,4 +1,4 @@
-def IMAGE_TAG = ''
+def IMAGE_TAG 
 node ('ecs-staging') {
  	// Clean workspace before doing anything yes
     deleteDir()
