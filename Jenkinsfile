@@ -27,7 +27,6 @@ node ('ecs-staging') {
                   //     sh """docker run -t -w /src cicd-buzz:${IMAGE_TAG} find . -name "*.pyc" -exec rm -f {} \\; && python -m pytest tests/test_generator.py"""
                          sh """docker run -t -w /src cicd-buzz:${IMAGE_TAG} find . -name "*.pyc" -exec rm -f {} \\; ls -all /src"""
 	        },
-	        },
 	        'unit': {
 	            sh "echo 'shell scripts to run unit tests...'"
 	        },
