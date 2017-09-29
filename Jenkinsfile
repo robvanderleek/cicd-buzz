@@ -24,7 +24,9 @@ node ('ecs-staging') {
 	           // sh "echo 'shell scripts to run static tests...'"
                    //  docker.image('cicd-buzz):$IMAGE_TAG').inside {
                        def IMAGE_TAG = readFile('GIT_COMMIT').take(6)
-                       sh """docker run -t -w /src cicd-buzz:${IMAGE_TAG} find . -name "*.pyc" -exec rm -f {} \\; && python -m pytest tests/test_generator.py"""
+                  //     sh """docker run -t -w /src cicd-buzz:${IMAGE_TAG} find . -name "*.pyc" -exec rm -f {} \\; && python -m pytest tests/test_generator.py"""
+                         sh """docker run -t -w /src cicd-buzz:${IMAGE_TAG} find . -name "*.pyc" -exec rm -f {} \\; ls -all /src"""
+	        },
 	        },
 	        'unit': {
 	            sh "echo 'shell scripts to run unit tests...'"
