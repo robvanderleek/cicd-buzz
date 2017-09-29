@@ -1,4 +1,4 @@
-node ('jenkinsdockerslave') {
+node ('jenkins') {
      // Clean workspace before doing anything yes
     deleteDir()
 
