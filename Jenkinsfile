@@ -21,11 +21,10 @@ node ('ecs-staging') {
         }
         stage ('Tests') {
 	        parallel 'static': {
-	           // sh "echo 'shell scripts to run static tests...'"
-                   //  docker.image('cicd-buzz):$IMAGE_TAG').inside {
-                       def IMAGE_TAG = readFile('GIT_COMMIT').take(6)
-                  //     sh """docker run -t -w /src cicd-buzz:${IMAGE_TAG} find . -name "*.pyc" -exec rm -f {} \\; && python -m pytest tests/test_generator.py"""
-                         sh """docker run -t -w /src cicd-buzz:${IMAGE_TAG} find . -name "*.pyc" -exec rm -f {} \\; && pip freeze"""
+                    def IMAGE_TAG = readFile('GIT_COMMIT').take(6)
+                    docker.image('cicd-buzz:${IMAGE_TAG}).inside {
+                       sh """pip freeze"""
+                 }
 	        },
 	        'unit': {
 	            sh "echo 'shell scripts to run unit tests...'"
