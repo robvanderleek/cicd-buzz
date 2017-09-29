@@ -22,7 +22,7 @@ node ('jenkinsdockerslave') {
         stage ('Tests') {
             parallel 'static': {
                     def IMAGE_TAG = readFile('GIT_COMMIT').take(6)
-                    docker.image('cicd-buzz:${IMAGE_TAG}').inside {
+                    docker.image("cicd-buzz:${IMAGE_TAG}").inside {
                        sh """pip freeze"""
                  }
             },
