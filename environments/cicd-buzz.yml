@@ -1,0 +1,31 @@
+scheduler:
+  type: ecs
+  region: us-east-1
+  cluster: testing
+  desired_count: 3
+  role: arn:aws:iam::420876366622:role/eu-central-1-iam-CHAVKOGR2LME-EcsServiceRole-CXHAFHB4D6QH
+  elb_v2:
+    # prod vpc
+    vpc_id: vpc-e676c080
+    # Health check path of the target group
+    #health_check_path: /site/sha
+    listeners:
+      - port: 80
+        protocol: HTTP
+    subnets:
+      - subnet-ecd6bcc1
+      - subnet-1dbce754
+    security_groups:
+      - sg-9604eaea
+#    load_balancer_attributes:
+#      access_logs.s3.enabled: 'false'
+    container_name: app
+    container_port: 5000
+app:
+  image: 420876366622.dkr.ecr.us-east-1.amazonaws.com/cicd-buzz
+  memory: 128
+  cpu: 256
+  port_mappings:
+    - container_port: 5000
+      host_port: 0
+      protocol: tcp
