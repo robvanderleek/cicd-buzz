@@ -1,9 +1,9 @@
 import random
 
-buzz = ('continuous testing', 'continuous integration', 
+buzz = ('continuous testing', 'continuous integration', 'Simple Reach ci di', 'Jenkins builds',
     'continuous deployment', 'continuous improvement', 'devops')
-adjectives = ('complete', 'modern', 'self-service', 'integrated', 'end-to-end')
-adverbs = ('remarkably', 'enormously', 'substantially', 'significantly', 
+adjectives = ('complete', 'modern', 'self-service', 'integrated', 'end-to-end', 'Make', 'Microservices')
+adverbs = ('remarkably', 'enormously', 'substantially', 'significantly', 'Make America Great Again', 
     'seriously')
 verbs = ('accelerates', 'improves', 'enhances', 'revamps', 'boosts')
 
