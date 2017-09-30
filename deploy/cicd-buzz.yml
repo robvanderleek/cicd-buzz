@@ -2,7 +2,7 @@ scheduler:
   type: ecs
   region: us-east-1
   cluster: testing
-  desired_count: 3
+  desired_count: 2
   role: arn:aws:iam::420876366622:role/eu-central-1-iam-CHAVKOGR2LME-EcsServiceRole-CXHAFHB4D6QH
   elb_v2:
     # prod vpc
@@ -23,8 +23,8 @@ scheduler:
     container_port: 5000
 app:
   image: 420876366622.dkr.ecr.us-east-1.amazonaws.com/cicd-buzz
-  memory: 128
-  cpu: 256
+  memory: 32
+  cpu: 80
   port_mappings:
     - container_port: 5000
       host_port: 0
