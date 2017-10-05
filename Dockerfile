@@ -4,4 +4,5 @@ COPY requirements.txt /src/requirements.txt
 RUN pip install -r /src/requirements.txt
 COPY app.py /src
 COPY buzz /src/buzz
+COPY static /src/static
 ENTRYPOINT ["python", "/src/app.py"]
