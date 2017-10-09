@@ -23,7 +23,7 @@ scheduler:
     container_port: 5000
 app:
   image: 420876366622.dkr.ecr.us-east-1.amazonaws.com/cicd-buzz
-  memory: 32
+  memory: 120
   cpu: 80
   port_mappings:
     - container_port: 5000
