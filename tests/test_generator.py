@@ -4,14 +4,12 @@ from buzz import generator
 
 
 def test_sample_single_word():
-    """Test simple word."""
     list_ = ('foo', 'bar', 'foobar')
     word = generator.sample(list_)
     assert word in list_
 
 
 def test_sample_multiple_words():
-    """Test multiple words."""
     list_ = ('foo', 'bar', 'foobar')
     words = generator.sample(list_, 2)
     assert len(words) == 2
@@ -21,6 +19,5 @@ def test_sample_multiple_words():
 
 
 def test_generate_buzz_of_at_least_five_words():
-    """Test phrase with at least 5 words."""
     phrase = generator.generate_buzz()
     assert len(phrase.split()) >= 5
