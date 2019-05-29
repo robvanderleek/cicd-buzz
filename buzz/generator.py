@@ -1,6 +1,6 @@
 import random
 
-buzz = ('fake news', 'continuous testing', 'continuous integration', 'Simple Reach ci di', 'Jenkins builds',
+buzz = ('they never send their best', 'fake news', 'continuous testing', 'continuous integration', 'Simple Reach ci di', 'Jenkins builds',
     'continuous deployment', 'continuous improvement', 'devops')
 adjectives = ('complete', 'modern', 'self-service', 'integrated', 'end-to-end', 'Make', 'Microservices')
 adverbs = ('remarkably', 'enormously', 'substantially', 'significantly', 'Make America Great Again', 
