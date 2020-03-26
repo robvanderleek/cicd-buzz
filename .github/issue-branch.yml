@@ -1,2 +1,5 @@
 mode: auto
 silent: false
+branches:
+  - label: Type: Feature
+    prefix: feature/`
