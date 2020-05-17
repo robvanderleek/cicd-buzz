@@ -1,4 +1,4 @@
 mode: auto
 silent: false
 autoCloseIssue: false
-branchName: '${issue.number}-${issue.title}/${issue.doestnotexist}/'
+branchName: '${issue.number}-${issue.title}//${issue.doestnotexist}/'
